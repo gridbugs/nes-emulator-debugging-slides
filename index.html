@@ -372,6 +372,7 @@ CB97  Lda(Absolute) 2007
 ;; the tile index and 0x0521 contains the high byte.
 
 ;; Write the low byte of the index to the PPU Address Register.
+;; The 0x2000 offset was the nametable base
 CB87  Lda(AbsoluteXIndexed) 0520
 CB8A  Sta(Absolute) 2006
 
@@ -401,6 +402,30 @@ PPU will immediately update the internal buffer with the byte at the current
 VRAM address. <strong>Thus, after setting the VRAM address, one should first read this
 register and discard the result.</strong></em>
     </div>
+</section>
+
+<section>
+    <h1>It works!</h1>
+<div class="nes"><img src="working.gif"></div>
+</section>
+
+<section>
+<div class="nes"><img src="title.png"></div>
+</section>
+
+<section>
+    <h1>Wipe Transition!</h1>
+<div class="nes"><img src="vertical-wipe.gif"></div>
+</section>
+
+<section>
+    <h1>It's supposed to look like this!</h1>
+<div class="nes"><img src="example.gif"></div>
+</section>
+
+<section>
+    <h1>Scroll down to scroll up</h1>
+<div class="nes"><img src="brief-scroll-down.gif"></div>
 </section>
 
 </article>
