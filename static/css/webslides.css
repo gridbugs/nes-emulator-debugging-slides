@@ -513,18 +513,18 @@ https://github.com/daneden/animate.css */
 /*-- fadeIn -- */
 @-webkit-keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 1; }
   to {
     opacity: 1; } }
 @keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 1; }
   to {
     opacity: 1; } }
 
 .fadeIn {
-  -webkit-animation: fadeIn 1s;
-          animation: fadeIn 1s; }
+  -webkit-animation: fadeIn 0s;
+          animation: fadeIn 0s; }
 
 /*-- fadeInUp -- */
 @-webkit-keyframes fadeInUp {
@@ -1246,30 +1246,6 @@ figure[class*='text-pull-'] {
 .bg-apple {
   font-family: 'San Francisco', helvetica, arial, sans-serif; }
 
-/* Ultra Light */
-@font-face {
-  font-family: 'San Francisco';
-  font-weight: 100;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff2"); }
-
-/* Thin */
-@font-face {
-  font-family: 'San Francisco';
-  font-weight: 200;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff2"); }
-
-/* Regular */
-@font-face {
-  font-family: 'San Francisco';
-  font-weight: 400;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2"); }
-
-/* Bold */
-@font-face {
-  font-family: 'San Francisco';
-  font-weight: bold;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff2"); }
-
 /*=========================================
 3. Header & Footer
 =========================================== */
@@ -1278,6 +1254,7 @@ https://github.com/webslides/webslides/issues/57 -- */
 header,
 footer,
 #navigation {
+  display:none;
   padding: 2.4rem;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
@@ -1325,7 +1302,6 @@ header[role='banner'] {
 .logo {
   text-transform: lowercase; }
   .logo a {
-    background: url("../images/logos/logo.svg") no-repeat 0 0;
     background-size: 4.8rem;
     float: left;
     height: 4.8rem;
@@ -1444,7 +1420,8 @@ section,
   min-height: 100vh;
   /*Fullscreen*/
   /* Prototyping? min-height: 720px (Baseline: 8px = .8rem)*/
-  padding: 2.4rem;
+  padding: 0rem;
+  padding-left: 2.4rem;
   /*Fixed/Visible header? padding-top: 12rem; */
   page-break-after: always;
   position: relative;
@@ -1452,8 +1429,8 @@ section,
   @media (min-width: 1024px) {
     section,
     .slide {
-      padding-bottom: 12rem;
-      padding-top: 12rem; } }
+      padding-bottom: 0rem;
+      padding-top: 0rem; } }
 
 /*slide with no padding (full card, .embed youtube video...) */
 .fullscreen {
@@ -1652,7 +1629,6 @@ a#previous {
   #navigation {
     -webkit-animation: fadeIn 6s;
             animation: fadeIn 6s;
-    background: url("../images/swipe.svg") no-repeat center top;
     background-size: 4.8rem; }
   #navigation a,
   #counter {
@@ -2812,12 +2788,6 @@ button:disabled:hover {
   @media (max-width: 499px) {
     [class*='badge-'] + [class*='badge-'] {
       margin-top: .8rem; } }
-
-.badge-ios {
-  background-image: url("../images/bt-appstore.png"); }
-
-.badge-android {
-  background-image: url("../images/bt-playstore.png"); }
 
 /*=========================================
 15. Longform

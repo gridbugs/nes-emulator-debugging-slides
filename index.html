@@ -1,1 +1,411 @@
-<h1>Hello</h1>
+<link rel="stylesheet" type='text/css' media='all' href="static/css/webslides.css"/>
+<link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css"/>
+<link rel="stylesheet" type='text/css' media='all' href="gridbugs.css"/>
+
+<style>
+ul {
+    padding-top:1rem;
+    font-size: 24pt;
+}
+li {
+    padding:10px;
+}
+.nes img {
+    height:80rem;
+    image-rendering: crisp-edges;
+}
+.nes-half img {
+    height:40rem;
+    image-rendering: crisp-edges;
+}
+.pre {
+  font-family: monospace;
+  white-space: pre;
+  line-height: 1.5em;
+}
+</style>
+
+
+<article id="webslides">
+
+<section>
+    <h1>Slide 0</h1>
+    <a href="mcs6500_family_programming_manual.pdf">Manual</a>
+</section>
+
+<section class="content-center">
+      <h1>Debugging a NES Emulator</h1>
+      <div style="">
+      <img src="ad.jpg">
+      </div>
+  </section>
+
+
+  <section>
+<h1>Early Video RAM Dump</h1>
+<div class="pre" style="font-size:12pt">
+0000: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0020: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0040: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0060: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0080: 24 24 24 62 62 62 24 24 62 62 62 24 62 24 24 62 24 62 24 24 62 24 62 62 62 24 62 24 62 24 24 24 
+00A0: 24 24 24 62 62 24 62 24 62 24 62 24 62 62 24 62 24 62 62 62 24 24 62 24 24 24 62 24 62 24 24 24 
+00C0: 24 24 24 62 62 24 62 24 62 24 62 24 62 62 62 62 24 62 62 24 24 24 62 62 62 24 62 62 62 24 24 24 
+00E0: 24 24 24 62 62 00 62 00 62 00 62 00 62 00 62 62 00 62 00 62 00 00 62 00 00 00 00 62 00 00 00 00 
+0100: 00 00 00 62 62 62 00 00 62 62 62 00 62 00 00 62 00 62 00 00 62 00 62 62 62 00 00 62 00 00 00 00 
+0120: 00 00 00 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0140: 24 24 24 24 24 24 24 62 24 24 62 24 62 62 62 24 62 24 24 62 24 62 62 62 62 24 24 24 24 24 24 24 
+0160: 24 24 24 24 24 24 24 62 62 62 24 24 62 24 62 24 62 62 24 62 24 62 24 24 24 24 24 24 24 24 24 24 
+0180: 24 24 24 24 24 24 24 62 62 24 24 24 62 24 62 24 62 62 62 62 24 62 24 62 62 24 24 24 24 24 24 24 
+01A0: 24 24 24 24 24 24 24 62 24 62 24 24 62 24 62 24 62 24 62 62 24 62 24 24 62 24 24 24 24 24 24 24 
+01C0: 24 24 24 24 24 24 24 62 24 24 62 24 62 62 62 24 62 24 24 62 24 62 62 62 62 24 24 24 24 24 24 24 
+01E0: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0200: 24 24 24 24 24 24 24 24 24 01 24 19 15 0A 22 0E 1B 24 10 0A 16 0E 24 0A 24 24 24 24 24 24 24 24 
+0220: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0240: 24 24 24 24 24 24 24 24 24 01 24 19 15 0A 22 0E 1B 24 10 0A 16 0E 24 0B 24 24 24 24 24 24 24 24 
+0260: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0280: 24 24 24 24 24 24 24 24 24 02 24 19 15 0A 22 0E 1B 24 10 0A 16 0E 24 0A 24 24 24 24 24 24 24 24 
+02A0: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+02C0: 24 24 24 24 24 24 24 24 24 02 24 19 15 0A 22 0E 1B 24 10 0A 16 0E 24 0B 24 24 24 24 24 24 24 24 
+02E0: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0300: 24 24 24 24 24 D3 01 09 08 01 24 17 12 17 1D 0E 17 0D 18 24 0C 18 65 15 1D 0D 64 24 24 24 24 24 
+0320: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0340: 24 24 24 24 24 24 24 24 24 24 24 16 0A 0D 0E 24 12 17 24 13 0A 19 0A 17 24 24 24 24 24 24 24 24 
+0360: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+0380: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+03A0: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+03C0: 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 24 
+03E0: 55 55 55 55 55 55 55 55 55 55 55 55 55 55 55 55 AA AA AA AA AA AA AA AA 24 24 24 24 24 24 24 24
+</div>
+  </section>
+
+<section>
+<h1 class="pre">0x62 -> '#' | 0x24 -> ' ' | _ -> '.'</h1>
+<div class="pre" style="font-size:12pt">
+                                
+                                
+                                
+                                
+   ###  ### #  # #  # ### # #   
+   ## # # # ## # ###  #   # #   
+   ## # # # #### ##   ### ###   
+   ##.#.#.#.#.##.#.#..#....#....
+...###..###.#..#.#..#.###..#....
+...                             
+       #  # ### #  # ####       
+       ###  # # ## # #          
+       ##   # # #### # ##       
+       # #  # # # ## #  #       
+       #  # ### #  # ####       
+                                
+         . ...... .... .        
+                                
+         . ...... .... .        
+                                
+         . ...... .... .        
+                                
+         . ...... .... .        
+                                
+     ..... ........ .......     
+                                
+           .... .. .....        
+                                
+                                
+                                
+                                
+</div>
+</section>
+
+<section>
+<h1>And finally...</h1>
+<div class="nes"><img src="dk.png"></div>
+</section>
+
+<section>
+<h1>And finally...</h1>
+<div class="nes"><img src="dk-gameplay.gif"></div>
+</section>
+
+
+<section>
+<h1>Trying a different game</h1>
+<div class="nes"><img src="mario.png"></div>
+</section>
+
+<section>
+<h1>Everything is broken!</h1>
+<div class="nes"><img src="demo.gif"></div>
+</section>
+
+<section>
+<h1>The first turtle is at y = 0x2C</h1>
+<div class="pre" style="font-size:18pt">
+CBDA  Iny(Implied)               increment index register Y
+CBDB  Inx(Implied)               intrement index register X
+CBDC  Cpx(Immediate) 20          compare index register X to 0x20 (32)
+CBDE  Bne(Relative) F6           branch if X != 0x20 (true in this case)
+CBD6  Lda(ZeroPageXIndexed) B0   load accumulator from address 0xB0 + X
+reading 0x2C from 0xB8           transfer 0x2C from zero page (working memory)
+CBD8  Sta(IndirectYIndexed) 14   store accumulator in [addess at 0x14] + Y
+writing 0x2C to t1 y position    t1 y position lives at 0x0368
+</div>
+</section>
+
+<section>
+<h1>Tracing reads of 0x2C from address 0x00B8</h1>
+<div class="pre" style="font-size:18pt">
+C750  Jsr(Absolute) CC90  call function at 0xCC90
+CC90  Lda(ZeroPage) B8    load value at 0xB8 into accumulator
+reading 0x2C from 0xB8    probably reading first turtle y position
+CC92  Clc(Implied)        clear carry flag
+CC93  Adc(Immediate) 08   add 8 to the value in accumulator
+CC95  Cmp(Immediate) E4   compare accumulator to 0xE4
+CC97  Bcc(Relative) 08    branch if accumulator &gt; 0xE4 (true)
+CCA1  Sta(ZeroPage) 01    store accumulator at address 0x01
+CCA3  Lda(ZeroPage) B9    load accumulator with value from address 0xB9
+CCA5  Sta(ZeroPage) 00    store accumulator at address 0x00
+CCA7  Jsr(Absolute) CA9A  call function at 0xCA9A
+</div>
+</section>
+
+<section>
+    <h1>What are we even doing?</h1>
+
+    <ul>
+        <li>Remember that the software is fine - it's a "hardware" problem!</li>
+        <li>I probably misunderstood <em>something</em> about the NES</li>
+        <li>Look for the program doing something which doesn't make any sense</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Taking a break</h1>
+<div class="nes-half" style="float:left">
+    <img src="mario-incorrect-render.png" style="float:left">
+    <img src="mario-correct-render.png">
+</div>
+</section>
+
+
+<section>
+<h1>Mario top sprite X coords ar at 0x0213 and 0x0217</h1>
+<div class="pre" style="font-size:18pt">
+CC20  Inx(Implied)
+CC21  Lda(IndirectYIndexed) 12
+CC23  Bit(ZeroPage) B7
+CC25  Bvs(Relative) 03     branch if overflow flag is set
+CC2A  Eor(Immediate) FF
+CC2C  Sec(Implied)
+CC2D  Sbc(Immediate) 08    subtract 8 from the accumulator
+CC2F  Sec(Implied)
+CC30  Adc(ZeroPage) B9
+CC32  Iny(Implied)
+CC33  Sta(AbsoluteXIndexed) 0200
+writing 0x68 to 0x0213     top-right sprite X is 0x68
+...
+CC20  Inx(Implied)
+CC21  Lda(IndirectYIndexed) 12
+CC23  Bit(ZeroPage) B7
+CC25  Bvs(Relative) 03     branch if overflow flag is set
+CC27  Clc(Implied)
+CC28  Bcc(Relative) 06
+CC30  Adc(ZeroPage) B9
+CC32  Iny(Implied)
+CC33  Sta(AbsoluteXIndexed) 0200
+writing 0x68 to 0x0217     top-left sprite X is _also_ 0x68!
+</div>
+</section>
+
+<section>
+    <h1>RTFM</h1>
+    <div style="padding-left:8rem;padding-right:8rem;padding-top:4rem">
+    <em style="font-size:24pt">The bit instruction affects the N (negative) flag with N being set to
+        the value of bit 7 of the memory being tested, the <strong>V (overflow) flag with V
+            being set equal to bit 6 of the memory being tested</strong> and Z (zero) being set
+by the result of the AND operation between the accumulator and the
+memory if the result is Zero, Z is reset otherwise. It does not
+affect the accumulator.</em>
+    </div>
+</section>
+
+<section>
+    <h1>...</h1>
+<div class="nes"><img src="gravity-works.gif"></div>
+</section>
+
+<section>
+    <h1>Platforms extend when hit on a corner?</h1>
+<div class="nes"><img src="floor-extension.gif"></div>
+</section>
+
+<section>
+    <h1>The simplest explanation...</h1>
+<div class="nes"><img src="jump-through-floor.gif"></div>
+</section>
+
+<section>
+<h1>This function gets called on Mario's coordinates</h1>
+<div class="pre" style="font-size:18pt">
+CA9A  Lda(ZeroPage) 00
+CA9C  Lsr(Accumulator)
+CA9D  Lsr(Accumulator)
+CA9E  Lsr(Accumulator)
+CA9F  Sta(ZeroPage) 12
+CAA1  Lda(Immediate) 20
+CAA3  Sta(ZeroPage) 13
+CAA5  Lda(Immediate) 00
+CAA7  Sta(ZeroPage) 15
+CAA9  Lda(ZeroPage) 01
+CAAB  And(Immediate) F8
+CAAD  Asl(Accumulator)
+CAAE  Rol(ZeroPage) 15
+CAB0  Asl(Accumulator)
+CAB1  Rol(ZeroPage) 15
+CAB3  Sta(ZeroPage) 14
+CAB5  Jsr(Absolute) CDD1  ;; call function to add 16-bit ints
+CAB8  Lda(ZeroPage) 15
+CABA  Sta(ZeroPage) 00
+CABC  Lda(ZeroPage) 14
+CABE  Sta(ZeroPage) 01
+CAC0  Rts(Implied)
+</div>
+</section>
+
+<section>
+<h1>It converts a pixel coord into a tile index + 0x2000</h1>
+<div class="pre" style="font-size:18pt">
+let tile_size_pixels = 8
+
+let screen_width_tiles = 32
+
+let mysterious_offset = 0x2000
+
+let pixel_coord_to_tile_index_with_offset pixel_x pixel_y =
+  let tile_x = pixel_x / tile_size_pixels in
+  let tile_y = pixel_y / tile_size_pixels in
+  let tile_index = tile_x + (tile_y * screen_width_tiles) in
+  tile_index + mysterious_offset
+</div>
+</section>
+
+<section>
+    <h1>What do we do with the index?</h1>
+<div class="pre" style="font-size:18pt">
+CB87  Lda(AbsoluteXIndexed) 0520 ;; mario's index is stored at 0x0520
+CB8A  Sta(Absolute) 2006         ;; write it to a graphics chip register?
+CB8D  Inx(Implied)
+CB8E  Lda(AbsoluteXIndexed) 0520
+CB91  Sta(Absolute) 2006
+CB94  Lda(Absolute) 2007
+CB97  Lda(Absolute) 2007
+</div>
+
+</section>
+
+<section>
+    <h1>Execution stream diffing</h1>
+<div class="nes-half" style="float:left">
+    <img src="short-jump-no-collision.gif" style="float:left">
+    <img src="short-jump-collision.gif">
+</div>
+
+</section>
+
+<section>
+    <h1>First meaningful difference</h1>
+<div class="language-patch highlighter-rouge"><div class="highlight pre"><code><span class="p">@@ -40592,12 +40592,12 @@</span> LDA read value 22
+ CB8A  Sta(Absolute) 2006
+ CB8D  Inx(Implied) 
+ CB8E  Lda(AbsoluteXIndexed) 0520
+<span class="gd">-LDA read value B3
+</span><span class="gi">+LDA read value B2
+</span> CB91  Sta(Absolute) 2006
+ CB94  Lda(Absolute) 2007
+ LDA read value 24
+ CB97  Lda(Absolute) 2007
+<span class="gd">-LDA read value 93
+</span><span class="gi">+LDA read value 24
+</span> CB9A  Sta(AbsoluteXIndexed) 0520
+ CB9D  Inx(Implied) 
+ CB9E  Dey(Implied) 
+        </code></div></div>
+
+</section>
+
+<section>
+    <h1>First code path difference</h1>
+<div class="language-patch highlighter-rouge"><div class="highlight pre"><code><span class="p">@@ -41963,193 +41963,22 @@</span> LDA read value 1
+ C97F  And(Immediate) 0F
+ C981  Beq(Relative) 09
+ C983  Lda(ZeroPage) CB
+<span class="gd">-LDA read value 93
+</span><span class="gi">+LDA read value 24
+</span> C985  Jsr(Absolute) CAC1
+ CAC1  Cmp(Immediate) 92
+ CAC3  Bcc(Relative) 0E
+<span class="gd">-CAC5  Cmp(Immediate) A0
+-CAC7  Bcc(Relative) 07
+-CAD0  Lda(Immediate) 01
+-LDA read value 1
+-CAD2  Rts(Implied) 
+</span><span class="gi">+CAD3  Lda(Immediate) 00
++LDA read value 0
++CAD5  Rts(Implied) 
+</span> C988  Ora(Immediate) 00
+ C98A  Bne(Relative) 04
+    </code>
+    </div></div>
+
+</section>
+
+<section>
+    <h1>24, 92, 93?</h1>
+<div class="nes"><img src="mario-pattern-table.png"></div>
+</section>
+
+<section>
+    <h1>Let's see that "graphics" code again</h1>
+<div class="pre" style="font-size:18pt">
+;; Assume that the X index register is initially 0,
+;; so the first 2 LDAs read from 0x520 and 0x521.
+;; Also assume that 0x0520 contains the low byte of
+;; the tile index and 0x0521 contains the high byte.
+
+;; Write the low byte of the index to the PPU Address Register.
+CB87  Lda(AbsoluteXIndexed) 0520
+CB8A  Sta(Absolute) 2006
+
+;; Write the high byte to the PPU Address Register.
+CB8D  Inx(Implied)
+CB8E  Lda(AbsoluteXIndexed) 0520
+CB91  Sta(Absolute) 2006
+
+;; Load accumulator from PPU Data Register.
+CB94  Lda(Absolute) 2007
+
+;; Load accumulator from PPU Data Register _again_.
+;; The value loaded here is the one that later gets compared
+;; with 0x92 to see if the tile is solid.
+CB97  Lda(Absolute) 2007
+</div>
+</section>
+
+<section>
+    <h1>RTFM</h1>
+    <div style="padding-left:8rem;padding-right:8rem;padding-top:4rem">
+    <em style="font-size:24pt">When reading while the VRAM address is in the range 0-$3EFF (i.e., before the
+palettes), the read will return the contents of an internal read buffer. This
+internal buffer is updated only when reading PPUDATA, and so is preserved across
+frames. After the CPU reads and gets the contents of the internal buffer, the
+PPU will immediately update the internal buffer with the byte at the current
+VRAM address. <strong>Thus, after setting the VRAM address, one should first read this
+register and discard the result.</strong></em>
+    </div>
+</section>
+
+</article>
+<script src="static/js/webslides.min.js"></script>
+<script>
+    window.ws = new WebSlides();
+</script>
+<script src="static/js/svg-icons.js"></script>
