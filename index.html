@@ -13,15 +13,53 @@ li {
 .nes img {
     height:80rem;
     image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 .nes-half img {
+    height:60rem;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+.nes-half-short img {
     height:40rem;
     image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+.nes-hud img {
+    height:30rem;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 .pre {
   font-family: monospace;
   white-space: pre;
   line-height: 1.5em;
+}
+code {
+    font-size: 24px;
+    line-height: 30px;
+}
+.short-table tr {
+    line-height: 18px;
+    font-size: 36px;
+}
+.bg-red {
+    background-color: #F47C7C;
+}
+.bg-yellow {
+    background-color: #F7F48B;
+}
+.bg-green {
+    background-color: #A1DE93;
+}
+.bg-blue {
+    background-color: #70A1D7;
+}
+.black-text-table {
+    font-size: 24pt;
+}
+.black-text-table tr td {
+    color: black;
 }
 </style>
 
@@ -412,11 +450,21 @@ register and discard the result.</strong></em>
 </section>
 
 <section>
+    <h1>Testing</h1>
+<div class="nes"><img src="tests.gif"></div>
+</section>
+
+<section>
+    <h1>A word about carts</h1>
+    <div><img src="cart.jpg"></div>
+</section>
+
+
+<section>
 <div class="nes"><img src="title.png"></div>
 </section>
 
 <section>
-    <h1>Wipe Transition!</h1>
 <div class="nes"><img src="vertical-wipe.gif"></div>
 </section>
 
@@ -426,9 +474,343 @@ register and discard the result.</strong></em>
 </section>
 
 <section>
-    <h1>Scroll down to scroll up</h1>
-<div class="nes"><img src="brief-scroll-down.gif"></div>
+    <h1>Background and Sprites</h1>
+<div class="nes-half" style="float:left">
+    <img src="sprites-and-background.gif" style="float:left">
+    <img src="only-sprites.gif">
+</div>
 </section>
+
+<section>
+    <h1>Scrolling Intro</h1>
+<div class="nes-half" style="float:left">
+    <img src="scroll-demo.gif" style="float:left">
+    <img src="scroll-demo-name-table.gif">
+</div>
+</section>
+
+<section>
+    <h1>Split-Screen Scrolling</h1>
+<div class="nes-half" style="float:left">
+    <img src="horizontal-scroll-demo.gif" style="float:left">
+    <img src="horizontal-scroll-demo-name-table.gif">
+</div>
+</section>
+
+
+<section>
+    <h1>Sprite Zero Hit</h1>
+<div class="nes-half" style="float:left">
+    <img src="horizontal-scroll-demo-fast.gif" style="float:left">
+    <img src="horizontal-scroll-demo-sprites.gif">
+</div>
+</section>
+
+<section>
+    <h1>Sprite Zero Hit</h1>
+<div class="nes-hud">
+    <img src="hud.png">
+<div class="nes-hud">
+    <img src="hud-sprites.png">
+</div>
+</section>
+
+<section>
+    <h1>So why can't we just...</h1>
+<div class="nes-half" style="float:left">
+    <img src="vertical-wipe.gif" style="float:left">
+    <img src="vertical-wipe-name-table.gif">
+</div>
+</section>
+
+<section>
+    <h1>PPUSCROLL</h1>
+    <h2>During Vertical Blank</h2>
+    <ul>
+        <li>write X, then Y</li>
+        <li>corrupted by video ram access (so do that first!)</li>
+    </ul>
+    <h2>During Frame</h2>
+    <ul>
+        <li>write X, then Y</li>
+        <li><strong>Y will be ignored</strong></li>
+        <li>X only takes effect on the next scanline</li>
+        <li>please for the love of god don't try to access video ram</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Logging PPUSCROLL</h1>
+<div class="nes-half" style="float:left">
+    <img src="short-horizontal-scroll.gif" style="float:left">
+    <img src="short-horizontal-scroll-name-table.gif">
+</div>
+
+</section>
+
+
+<section>
+    <h1>Logging PPUSCROLL</h1>
+<table class="short-table">
+<tr><th>Frame</th><th>Sub-Frame</th><th>Component</th><th>Value</th></tr>
+<tr><td>0</td><td>Pixel Row 63</td><td>X</td><td>72</td></tr>
+<tr><td>1</td><td>Pixel Row 63</td><td>X</td><td>76</td></tr>
+<tr><td>2</td><td>Pixel Row 63</td><td>X</td><td>80</td></tr>
+<tr><td>3</td><td>Pixel Row 63</td><td>X</td><td>84</td></tr>
+<tr><td>4</td><td>Pixel Row 63</td><td>X</td><td>88</td></tr>
+<tr><td>5</td><td>Pixel Row 63</td><td>X</td><td>92</td></tr>
+<tr><td>6</td><td>Pixel Row 63</td><td>X</td><td>96</td></tr>
+<tr><td>7</td><td>Pixel Row 63</td><td>X</td><td>100</td></tr>
+<tr><td>8</td><td>Pixel Row 63</td><td>X</td><td>104</td></tr>
+<tr><td>9</td><td>Pixel Row 63</td><td>X</td><td>108</td></tr>
+<tr><td>10</td><td>Pixel Row 63</td><td>X</td><td>112</td></tr>
+<tr><td>11</td><td>Pixel Row 63</td><td>X</td><td>116</td></tr>
+<tr><td>12</td><td>Pixel Row 63</td><td>X</td><td>120</td></tr>
+<tr><td>13</td><td>Pixel Row 63</td><td>X</td><td>124</td></tr>
+<tr><td>14</td><td>Pixel Row 63</td><td>X</td><td>128</td></tr>
+<tr><td>15</td><td>Pixel Row 63</td><td>X</td><td>132</td></tr>
+</table>
+
+</section>
+
+<section>
+    <h1>Logging PPUADDR?</h1>
+<div class="nes-half" style="float:left">
+    <img src="short-vertical-scroll.gif" style="float:left">
+    <img src="short-vertical-scroll-name-table.gif">
+</div>
+
+</section>
+
+<section>
+    <h1>Logging PPUADDR?</h1>
+<table class="short-table">
+<tr><th>Frame</th><th>Sub-Frame</th><th>Address</th></tr>
+<tr><td>0</td><td>Pixel Row 63</td><td>0x2280</td></tr>
+<tr><td>1</td><td>Pixel Row 63</td><td>0x2280</td></tr>
+<tr><td>2</td><td>Pixel Row 63</td><td>0x2260</td></tr>
+<tr><td>3</td><td>Pixel Row 63</td><td>0x2260</td></tr>
+<tr><td>4</td><td>Pixel Row 63</td><td>0x2240</td></tr>
+<tr><td>5</td><td>Pixel Row 63</td><td>0x2240</td></tr>
+<tr><td>6</td><td>Pixel Row 63</td><td>0x2220</td></tr>
+<tr><td>7</td><td>Pixel Row 63</td><td>0x2220</td></tr>
+<tr><td>8</td><td>Pixel Row 63</td><td>0x2200</td></tr>
+<tr><td>9</td><td>Pixel Row 63</td><td>0x2200</td></tr>
+<tr><td>10</td><td>Pixel Row 63</td><td>0x21E0</td></tr>
+<tr><td>11</td><td>Pixel Row 63</td><td>0x21E0</td></tr>
+<tr><td>12</td><td>Pixel Row 63</td><td>0x21C0</td></tr>
+<tr><td>13</td><td>Pixel Row 63</td><td>0x21C0</td></tr>
+<tr><td>14</td><td>Pixel Row 63</td><td>0x21A0</td></tr>
+<tr><td>15</td><td>Pixel Row 63</td><td>0x21A0</td></tr>
+</table>
+
+</section>
+
+
+
+<section>
+    <h1>Internal Address/Scroll Register</h1>
+<table class="black-text-table">
+<tr>
+<th>Bit</th>
+<td class="bg-red">14</td>
+<td class="bg-red">13</td>
+<td class="bg-red">12</td>
+<td class="bg-yellow">11</td>
+<td class="bg-yellow">10</td>
+<td class="bg-green">9</td>
+<td class="bg-green">8</td>
+<td class="bg-green">7</td>
+<td class="bg-green">6</td>
+<td class="bg-green">5</td>
+<td class="bg-blue">4</td>
+<td class="bg-blue">3</td>
+<td class="bg-blue">2</td>
+<td class="bg-blue">1</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th>Meaning</th>
+<td colspan="3" class="bg-red" style="text-align:center">Fine Y Scroll</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">Name Table<br/> Select</td>
+<td colspan="5" class="bg-green" style="text-align:center">Coarse Y Scroll</td>
+<td colspan="5" class="bg-blue" style="text-align:center">Coarse X Scroll</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2280</span> Bits</th>
+<td class="bg-red">0</td>
+<td class="bg-red">1</td>
+<td class="bg-red">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2280</span> Parts</th>
+<td colspan="3" class="bg-red" style="text-align:center">2</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">0</td>
+<td colspan="5" class="bg-green" style="text-align:center">20</td>
+<td colspan="5" class="bg-blue" style="text-align:center">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2260</span> Bits</th>
+<td class="bg-red">0</td>
+<td class="bg-red">1</td>
+<td class="bg-red">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">1</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2260</span> Parts</th>
+<td colspan="3" class="bg-red" style="text-align:center">2</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">0</td>
+<td colspan="5" class="bg-green" style="text-align:center">19</td>
+<td colspan="5" class="bg-blue" style="text-align:center">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2240</span> Bits</th>
+<td class="bg-red">0</td>
+<td class="bg-red">1</td>
+<td class="bg-red">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2240</span> Parts</th>
+<td colspan="3" class="bg-red" style="text-align:center">2</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">0</td>
+<td colspan="5" class="bg-green" style="text-align:center">18</td>
+<td colspan="5" class="bg-blue" style="text-align:center">0</td>
+</tr>
+</table>
+</section>
+
+<section>
+    <h1>The first frame scrolls down 2 pixels</h1>
+<div class="nes-half" style="float:left">
+    <img src="brief-scroll-down.gif" style="float:left">
+    <img src="brief-scroll-down-name-table.gif">
+</div>
+</section>
+
+<section>
+<div class="nes-half-short" style="float:left">
+    <img src="brief-scroll-down.gif" style="float:left">
+    <img src="brief-scroll-down-name-table.gif">
+</div>
+
+<table class="black-text-table">
+<tr>
+<th>Bit</th>
+<td class="bg-red">14</td>
+<td class="bg-red">13</td>
+<td class="bg-red">12</td>
+<td class="bg-yellow">11</td>
+<td class="bg-yellow">10</td>
+<td class="bg-green">9</td>
+<td class="bg-green">8</td>
+<td class="bg-green">7</td>
+<td class="bg-green">6</td>
+<td class="bg-green">5</td>
+<td class="bg-blue">4</td>
+<td class="bg-blue">3</td>
+<td class="bg-blue">2</td>
+<td class="bg-blue">1</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th>Meaning</th>
+<td colspan="3" class="bg-red" style="text-align:center">Fine Y Scroll</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">Name Table Select</td>
+<td colspan="5" class="bg-green" style="text-align:center">Coarse Y Scroll</td>
+<td colspan="5" class="bg-blue" style="text-align:center">Coarse X Scroll</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2800</span> Bits</th>
+<td class="bg-red">0</td>
+<td class="bg-red">1</td>
+<td class="bg-red">0</td>
+<td class="bg-yellow">1</td>
+<td class="bg-yellow">0</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-green">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x2800</span> Parts</th>
+<td colspan="3" class="bg-red" style="text-align:center">2</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">2</td>
+<td colspan="5" class="bg-green" style="text-align:center">0</td>
+<td colspan="5" class="bg-blue" style="text-align:center">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x23A0</span> Bits</th>
+<td class="bg-red">0</td>
+<td class="bg-red">1</td>
+<td class="bg-red">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-yellow">0</td>
+<td class="bg-green">1</td>
+<td class="bg-green">1</td>
+<td class="bg-green">1</td>
+<td class="bg-green">0</td>
+<td class="bg-green">1</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th><span style="font-family:monospace">0x23A0</span> Parts</th>
+<td colspan="3" class="bg-red" style="text-align:center">2</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">0</td>
+<td colspan="5" class="bg-green" style="text-align:center">29</td>
+<td colspan="5" class="bg-blue" style="text-align:center">0</td>
+</tr>
+</table>
+</section>
+
+<section>
+<div class="nes"><img src="take-this.gif"></div>
+</section>
+
 
 </article>
 <script src="static/js/webslides.min.js"></script>
