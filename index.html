@@ -267,7 +267,9 @@ writing 0x68 to 0x0217     top-left sprite X is _also_ 0x68!
 by the result of the AND operation between the accumulator and the
 memory if the result is Zero, Z is reset otherwise. It does not
 affect the accumulator.</em></p>
+    <h3>Every other instruction sets flags based only on its result!</h3>
     </div>
+
 </section>
 
 <section>
@@ -538,7 +540,7 @@ register and discard the result.</strong></em>
         <li>write X, then Y</li>
         <li><strong>Y will be ignored</strong></li>
         <li>X only takes effect on the next scanline</li>
-        <li>please for the love of god don't try to access video ram</li>
+        <li><strong>writing PPUADDR or reading/writing PPUDATA will cause artefacts</strong></li>
     </ul>
 </section>
 
@@ -556,22 +558,22 @@ register and discard the result.</strong></em>
     <h1>Logging PPUSCROLL</h1>
 <table class="short-table">
 <tr><th>Frame</th><th>Sub-Frame</th><th>Component</th><th>Value</th></tr>
-<tr><td>0</td><td>Pixel Row 63</td><td>X</td><td>72</td></tr>
-<tr><td>1</td><td>Pixel Row 63</td><td>X</td><td>76</td></tr>
-<tr><td>2</td><td>Pixel Row 63</td><td>X</td><td>80</td></tr>
-<tr><td>3</td><td>Pixel Row 63</td><td>X</td><td>84</td></tr>
-<tr><td>4</td><td>Pixel Row 63</td><td>X</td><td>88</td></tr>
-<tr><td>5</td><td>Pixel Row 63</td><td>X</td><td>92</td></tr>
-<tr><td>6</td><td>Pixel Row 63</td><td>X</td><td>96</td></tr>
-<tr><td>7</td><td>Pixel Row 63</td><td>X</td><td>100</td></tr>
-<tr><td>8</td><td>Pixel Row 63</td><td>X</td><td>104</td></tr>
-<tr><td>9</td><td>Pixel Row 63</td><td>X</td><td>108</td></tr>
-<tr><td>10</td><td>Pixel Row 63</td><td>X</td><td>112</td></tr>
-<tr><td>11</td><td>Pixel Row 63</td><td>X</td><td>116</td></tr>
-<tr><td>12</td><td>Pixel Row 63</td><td>X</td><td>120</td></tr>
-<tr><td>13</td><td>Pixel Row 63</td><td>X</td><td>124</td></tr>
-<tr><td>14</td><td>Pixel Row 63</td><td>X</td><td>128</td></tr>
-<tr><td>15</td><td>Pixel Row 63</td><td>X</td><td>132</td></tr>
+<tr><td>0</td><td>Scanline 63</td><td>X</td><td>72</td></tr>
+<tr><td>1</td><td>Scanline 63</td><td>X</td><td>76</td></tr>
+<tr><td>2</td><td>Scanline 63</td><td>X</td><td>80</td></tr>
+<tr><td>3</td><td>Scanline 63</td><td>X</td><td>84</td></tr>
+<tr><td>4</td><td>Scanline 63</td><td>X</td><td>88</td></tr>
+<tr><td>5</td><td>Scanline 63</td><td>X</td><td>92</td></tr>
+<tr><td>6</td><td>Scanline 63</td><td>X</td><td>96</td></tr>
+<tr><td>7</td><td>Scanline 63</td><td>X</td><td>100</td></tr>
+<tr><td>8</td><td>Scanline 63</td><td>X</td><td>104</td></tr>
+<tr><td>9</td><td>Scanline 63</td><td>X</td><td>108</td></tr>
+<tr><td>10</td><td>Scanline 63</td><td>X</td><td>112</td></tr>
+<tr><td>11</td><td>Scanline 63</td><td>X</td><td>116</td></tr>
+<tr><td>12</td><td>Scanline 63</td><td>X</td><td>120</td></tr>
+<tr><td>13</td><td>Scanline 63</td><td>X</td><td>124</td></tr>
+<tr><td>14</td><td>Scanline 63</td><td>X</td><td>128</td></tr>
+<tr><td>15</td><td>Scanline 63</td><td>X</td><td>132</td></tr>
 </table>
 
 </section>
@@ -589,22 +591,22 @@ register and discard the result.</strong></em>
     <h1>Logging PPUADDR?</h1>
 <table class="short-table">
 <tr><th>Frame</th><th>Sub-Frame</th><th>Address</th></tr>
-<tr><td>0</td><td>Pixel Row 63</td><td>0x2280</td></tr>
-<tr><td>1</td><td>Pixel Row 63</td><td>0x2280</td></tr>
-<tr><td>2</td><td>Pixel Row 63</td><td>0x2260</td></tr>
-<tr><td>3</td><td>Pixel Row 63</td><td>0x2260</td></tr>
-<tr><td>4</td><td>Pixel Row 63</td><td>0x2240</td></tr>
-<tr><td>5</td><td>Pixel Row 63</td><td>0x2240</td></tr>
-<tr><td>6</td><td>Pixel Row 63</td><td>0x2220</td></tr>
-<tr><td>7</td><td>Pixel Row 63</td><td>0x2220</td></tr>
-<tr><td>8</td><td>Pixel Row 63</td><td>0x2200</td></tr>
-<tr><td>9</td><td>Pixel Row 63</td><td>0x2200</td></tr>
-<tr><td>10</td><td>Pixel Row 63</td><td>0x21E0</td></tr>
-<tr><td>11</td><td>Pixel Row 63</td><td>0x21E0</td></tr>
-<tr><td>12</td><td>Pixel Row 63</td><td>0x21C0</td></tr>
-<tr><td>13</td><td>Pixel Row 63</td><td>0x21C0</td></tr>
-<tr><td>14</td><td>Pixel Row 63</td><td>0x21A0</td></tr>
-<tr><td>15</td><td>Pixel Row 63</td><td>0x21A0</td></tr>
+<tr><td>0</td><td>Scanline 63</td><td>0x2280</td></tr>
+<tr><td>1</td><td>Scanline 63</td><td>0x2280</td></tr>
+<tr><td>2</td><td>Scanline 63</td><td>0x2260</td></tr>
+<tr><td>3</td><td>Scanline 63</td><td>0x2260</td></tr>
+<tr><td>4</td><td>Scanline 63</td><td>0x2240</td></tr>
+<tr><td>5</td><td>Scanline 63</td><td>0x2240</td></tr>
+<tr><td>6</td><td>Scanline 63</td><td>0x2220</td></tr>
+<tr><td>7</td><td>Scanline 63</td><td>0x2220</td></tr>
+<tr><td>8</td><td>Scanline 63</td><td>0x2200</td></tr>
+<tr><td>9</td><td>Scanline 63</td><td>0x2200</td></tr>
+<tr><td>10</td><td>Scanline 63</td><td>0x21E0</td></tr>
+<tr><td>11</td><td>Scanline 63</td><td>0x21E0</td></tr>
+<tr><td>12</td><td>Scanline 63</td><td>0x21C0</td></tr>
+<tr><td>13</td><td>Scanline 63</td><td>0x21C0</td></tr>
+<tr><td>14</td><td>Scanline 63</td><td>0x21A0</td></tr>
+<tr><td>15</td><td>Scanline 63</td><td>0x21A0</td></tr>
 </table>
 
 </section>
