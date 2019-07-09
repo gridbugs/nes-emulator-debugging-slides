@@ -410,28 +410,25 @@ CB97  Lda(Absolute) 2007
 <section>
     <h1>Let's see that "graphics" code again</h1>
 <div class="pre" style="font-size:18pt">
-;; Assume that the X index register is initially 0,
-;; so the first 2 LDAs read from 0x520 and 0x521.
-;; Also assume that 0x0520 contains the low byte of
-;; the tile index and 0x0521 contains the high byte.
 
-;; Write the low byte of the index to the PPU Address Register.
-;; The 0x2000 offset was the nametable base
+
+;; *0x0520 = pixel_coord_to_tile_index_with_offset(mario_x, mario_y)
+    
+;; Treat it as a video ram address.
 CB87  Lda(AbsoluteXIndexed) 0520
 CB8A  Sta(Absolute) 2006
-
-;; Write the high byte to the PPU Address Register.
 CB8D  Inx(Implied)
 CB8E  Lda(AbsoluteXIndexed) 0520
 CB91  Sta(Absolute) 2006
 
-;; Load accumulator from PPU Data Register.
+;; Read from video ram, incrementing the current video ram address
 CB94  Lda(Absolute) 2007
 
-;; Load accumulator from PPU Data Register _again_.
-;; The value loaded here is the one that later gets compared
-;; with 0x92 to see if the tile is solid.
+;; Read from video ram AGAIN and use this value.
 CB97  Lda(Absolute) 2007
+    
+;; But the first read result was the one we wanted!
+;; Why did we discard that value and read again?
 </div>
 </section>
 
@@ -529,15 +526,16 @@ register and discard the result.</strong></em>
 </section>
 
 <section>
-    <h1>PPUSCROLL</h1>
+    <h1>Some imaginary PPU documentation</h1>
+    <h2>Frames are drawn top-to-bottom, left-to right</h2>
     <h2>During Vertical Blank</h2>
     <ul>
-        <li>write X, then Y</li>
-        <li>corrupted by video ram access (so do that first!)</li>
+        <li>write X scroll, then Y scroll, to PPUSCROLL</li>
+        <li>PPUSCROLL is corrupted by video ram access (so do that first!)</li>
     </ul>
     <h2>During Frame</h2>
     <ul>
-        <li>write X, then Y</li>
+        <li>write X, then Y, to PPUSCROLL as usual, BUT...</li>
         <li><strong>Y will be ignored</strong></li>
         <li>X only takes effect on the next scanline</li>
         <li><strong>writing PPUADDR or reading/writing PPUDATA will cause artefacts</strong></li>
@@ -727,6 +725,46 @@ register and discard the result.</strong></em>
 </div>
 </section>
 
+<section>
+       <h1>Internal Address/Scroll Register</h1>
+<table class="black-text-table">
+<tr>
+<th>Bit</th>
+<td class="bg-red">14</td>
+<td class="bg-red">13</td>
+<td class="bg-red">12</td>
+<td class="bg-yellow">11</td>
+<td class="bg-yellow">10</td>
+<td class="bg-green">9</td>
+<td class="bg-green">8</td>
+<td class="bg-green">7</td>
+<td class="bg-green">6</td>
+<td class="bg-green">5</td>
+<td class="bg-blue">4</td>
+<td class="bg-blue">3</td>
+<td class="bg-blue">2</td>
+<td class="bg-blue">1</td>
+<td class="bg-blue">0</td>
+</tr>
+<tr>
+<th>Meaning</th>
+<td colspan="3" class="bg-red" style="text-align:center">Fine Y Scroll</td>
+<td colspan="2" class="bg-yellow" style="text-align:center">Name Table<br/> Select</td>
+<td colspan="5" class="bg-green" style="text-align:center">Coarse Y Scroll</td>
+<td colspan="5" class="bg-blue" style="text-align:center">Coarse X Scroll</td>
+</tr>
+    </table>   
+    <h2>PPU updates this register every 8 pixels rendered
+    <ul>
+        <li>Change <span class="bg-blue">Coarse X Scroll</span> when transitioning between tiles (horizontal)</li>
+        <li>Change <span class="bg-green">Coarse Y Scroll</span> when transitioning between tiles (vertical)</li>
+        <li>Change <span class="bg-yellow">Name Table Select</span> when crossing name table boundary</li>
+        <li>Change <span class="bg-red">Fine Y Scroll</span> after each row of pixels</li>
+        </ul>
+    
+    
+    </section>
+    
 <section>
 <div class="nes-half-short" style="float:left">
     <img src="brief-scroll-down.gif" style="float:left">
